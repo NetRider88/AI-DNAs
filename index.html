@@ -1,0 +1,550 @@
+<!-- Create a responsive one-page HTML website for AI-Dnas.com -->
+<!DOCTYPE html>
+<html lang="""""en"></html>
+
+<head>
+    <meta charset="""""UTF-8">
+    <meta name="""""viewport" content="""""width=device-width, initial-scale=1.0">
+    <title>AI Dnas - Future of Technology</title>
+    <!-- Include some simple, clean CSS styling for the page -->
+    <style>
+        :root {
+            --primary-light: #F5F8FA;
+            --primary-dark: #C9CBCF;
+            --text-primary: #E0E0E0;
+            --text-secondary: #A7C4D5;
+            --background: #D4D4D4;
+            --shadow: #B0B0B0;
+            --white: #FFFFFF;
+            --primary-gradient: linear-gradient(135deg, #F5F8FA 0%, #C9CBCF 100%);
+            --text-gradient: linear-gradient(120deg, #E0E0E0 0%, #A7C4D5 100%);
+            --depth-gradient: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(176,176,176,0.1));
+            --bg-gradient-1: #1a1a1a;
+            --bg-gradient-2: #2a2a2a;
+            --bg-gradient-3: rgba(167, 196, 213, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient-1);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(125deg, 
+                    var(--bg-gradient-1) 0%, 
+                    var(--bg-gradient-2) 50%,
+                    var(--bg-gradient-3) 100%);
+            opacity: 0.8;
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            padding: 2rem;
+            background: rgba(245, 248, 250, 0.05);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(167, 196, 213, 0.1);
+        }
+
+        h1 {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 120px auto 0;
+            padding: 2rem;
+            animation: fadeIn 1s ease-in;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            background: var(--text-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary-gradient);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--primary-dark);
+            box-shadow: 0 2px 10px rgba(176, 176, 176, 0.2);
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(167, 196, 213, 0.3);
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--text-secondary) 100%);
+        }
+
+        .button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .button:hover::after {
+            transform: translateX(0);
+        }
+
+        footer {
+            margin-top: 100px;
+            padding: 2rem;
+            text-align: center;
+            background: rgba(245, 248, 250, 0.02);
+            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(167, 196, 213, 0.1);
+            color: var(--text-secondary);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 2.2rem;
+            }
+            main {
+                padding: 1rem;
+            }
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--depth-gradient);
+            border-radius: 10px;
+            border: 1px solid var(--primary-dark);
+        }
+
+        .logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-error {
+            /* Fallback styles when image fails to load */
+            background: var(--primary-gradient);
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .logo-container {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .main-content {
+            background: rgba(245, 248, 250, 0.02);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid rgba(167, 196, 213, 0.1);
+            box-shadow: 
+                0 4px 15px rgba(176, 176, 176, 0.1),
+                inset 0 0 30px rgba(245, 248, 250, 0.02);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-section {
+            padding: 6rem 2rem;
+            margin-top: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .profile-card {
+            background: rgba(245, 248, 250, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(167, 196, 213, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            animation: fadeIn 1s ease-in;
+            box-shadow: 
+                0 4px 15px rgba(176, 176, 176, 0.1),
+                inset 0 0 30px rgba(245, 248, 250, 0.02);
+        }
+
+        .profile-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: var(--text-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .profile-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .profile-content p:first-of-type {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                padding: 4rem 1rem;
+            }
+            
+            .profile-card {
+                padding: 2rem;
+            }
+            
+            .profile-header h2 {
+                font-size: 2rem;
+            }
+            
+            .profile-content p {
+                font-size: 1rem;
+            }
+        }
+
+        .contact-section {
+            padding: 6rem 2rem;
+        }
+
+        .contact-card {
+            background: rgba(245, 248, 250, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(167, 196, 213, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .contact-card h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            background: var(--text-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(245, 248, 250, 0.05);
+            border: 1px solid rgba(167, 196, 213, 0.1);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--text-secondary);
+            box-shadow: 0 0 0 2px rgba(167, 196, 213, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 8px;
+            color: var(--bg-gradient-1);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 4rem 1rem;
+            }
+            
+            .contact-card {
+                padding: 2rem;
+            }
+        }
+
+        .form-status {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .loading-spinner {
+            width: 30px;
+            height: 30px;
+            border: 3px solid var(--text-secondary);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        .success-message {
+            color: #4facfe;
+            margin-top: 1rem;
+        }
+
+        .error-message {
+            color: #ff4747;
+            margin-top: 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img 
+                    src="assets/logo.png" 
+                    onerror="this.onerror=null; this.src='./logo.png'; this.classList.add('logo-error')" 
+                    alt="AI-Dnas Logo" 
+                    class="logo"
+                    loading="eager"
+                >
+            </div>
+            <h1>AI Dnas</h1>
+        </div>
+    </header>
+    <main>
+        <h2>Connecting Ideas with Technology</h2>
+        <p>
+            AI Dnas is a platform that will host innovative software solutions designed to simplify and automate tasks.
+            We believe in making the world more connected and easier to navigate through intelligent AI-driven tools.
+        </p>
+        <a class="button" href="#contact">Get Notified</a>
+    </main>
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="profile-card">
+                <div class="profile-header">
+                    <h2>About Me</h2>
+                </div>
+                <div class="profile-content">
+                    <p>Hi, I'm John, an enthusiast of technology, AI, and innovation. I am focused on making processes more efficient and empowering teams through automation and technology.</p>
+                    
+                    <p>With a deep passion for artificial intelligence, programming, and web development, I am always exploring how emerging tech can transform and simplify our lives. My current work revolves around developing digital tools that streamline processes, reduce manual work, and make data more accessible. I am also actively engaged in enhancing communication channels, analyzing performance, and building scalable systems.</p>
+                    
+                    <p>The goal is to create a platform that reflects my passion for technology and offers useful tools and services that bring more efficiency and connectivity into everyday tasks.</p>
+                    
+                    <p>When I'm not working or tinkering with tech projects, I enjoy exploring the latest gadgets and innovations. My dream is to make meaningful contributions that simplify life, enhance productivity, and create more opportunities for people to enjoy what matters most to them.</p>
+                    
+                    <p>Thanks for stopping by my page—I can't wait to share more of my journey with you as I work towards making the world a more connected and efficient place, one AI solution at a time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-card">
+                <h2>Let's Collaborate</h2>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <div class="form-status">
+                        <div id="loadingSpinner" class="loading-spinner" style="display: none;"></div>
+                        <div id="successMessage" class="success-message" style="display: none;">Message sent successfully!</div>
+                        <div id="errorMessage" class="error-message" style="display: none;">Error sending message. Please try again.</div>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>© 2024 AI-Dnas. All rights reserved.</p>
+    </footer>
+    <!-- Add EmailJS SDK before your form script -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script>
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize EmailJS
+            emailjs.init("q16V_MzCd3bH2H9Fv");
+
+            // Get form elements with null checks
+            const form = document.getElementById('contactForm');
+            const spinner = document.getElementById('loadingSpinner');
+            const successMsg = document.getElementById('successMessage');
+            const errorMsg = document.getElementById('errorMessage');
+
+            // Helper function to safely toggle element visibility
+            const toggleElement = (element, show) => {
+                if (element && element.style) {
+                    element.style.display = show ? 'block' : 'none';
+                }
+            };
+
+            // Helper function to reset message states
+            const resetMessages = () => {
+                toggleElement(spinner, true);
+                toggleElement(successMsg, false);
+                toggleElement(errorMsg, false);
+            };
+
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Safely reset messages
+                    resetMessages();
+
+                    try {
+                        const templateParams = {
+                            to_name: 'John',
+                            from_name: document.getElementById('name')?.value || '',
+                            from_email: document.getElementById('email')?.value || '',
+                            subject: document.getElementById('subject')?.value || '',
+                            message: document.getElementById('message')?.value || '',
+                            to_email: 'john@ai-dnas.com'
+                        };
+
+                        emailjs.send('service_rqx8la9', 'template_iwb22z3', templateParams)
+                            .then(function() {
+                                toggleElement(spinner, false);
+                                toggleElement(successMsg, true);
+                                form.reset();
+                            })
+                            .catch(function(error) {
+                                toggleElement(spinner, false);
+                                toggleElement(errorMsg, true);
+                                console.error('EmailJS error:', error);
+                            });
+                    } catch (error) {
+                        toggleElement(spinner, false);
+                        toggleElement(errorMsg, true);
+                        console.error('Form submission error:', error);
+                    }
+                });
+            } else {
+                console.error('Contact form not found in the DOM');
+            }
+        });
+    </script>
+</body>
+
+</html>
